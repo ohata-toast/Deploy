@@ -3,7 +3,7 @@
 이 문서에서는 다음과 같은 내용을 다룹니다.
 
 * [서비스 사용 전 필수 사항](/Dev%20Tools/Deploy/ko/setup-guide/#_1)
-* [NHN Cloud Agent 사용을 위한 준비](/Dev%20Tools/Deploy/ko/setup-guide/#cloud-agent)
+* [NHN Cloud Agent 사용을 위한 준비](/Dev%20Tools/Deploy/ko/setup-guide/#nhn-cloud-agent)
 * [SSH 연결을 위한 준비](/Dev%20Tools/Deploy/ko/setup-guide/#ssh)
 
 ## 서비스 사용 전 필수 사항

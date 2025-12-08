@@ -3,7 +3,7 @@
 This document contains the following.
 
 * [Pre-requisites before using the service](/Dev%20Tools/Deploy/en/setup-guide/#_1)
-* [Prepare to use NHN Cloud Agent](/Dev%20Tools/Deploy/en/setup-guide/#cloud-agent)
+* [Prepare to use NHN Cloud Agent](/Dev%20Tools/Deploy/en/setup-guide/#prepare-to-use-nhn-cloud-agent)
 * [Prepare for an SSH connection](/Dev%20Tools/Deploy/en/setup-guide/#ssh)
 
 ## Pre-requisites before using the service
