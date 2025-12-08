@@ -3,7 +3,7 @@
 This document contains the following.
 
 * [Pre-requisites before using the service](/Dev%20Tools/Deploy/en/setup-guide/#_1)
-* [Prepare to use NHN Cloud Agent](/Dev%20Tools/Deploy/en/setup-guide/#cloud-agent)
+* [Prepare to use NHN Cloud Agent](/Dev%20Tools/Deploy/en/setup-guide/#prepare-to-use-nhn-cloud-agent)
 * [Prepare for an SSH connection](/Dev%20Tools/Deploy/en/setup-guide/#ssh)
 
 ## Pre-requisites before using the service
@@ -13,7 +13,7 @@ This document contains the following.
 
 > For NHN Cloud VM servers, you can use an SSH connection or NHN Cloud Agent to deliver the server's deployment command.
 In case of SSH connection, you need to [prepare for SSH connection](/Dev%20Tools/Deploy/en/setup-guide/#ssh), such as IP, port, and firewall exception handling of the target server.
-For NHN Cloud Agent, you need to [prepare for using](/Dev%20Tools/Deploy/en/setup-guide/#cloud-agent)NHN Cloud Agent, such as installing and validating NHN Cloud Agent.
+For NHN Cloud Agent, you need to [prepare for using](/Dev%20Tools/Deploy/en/setup-guide/#prepare-to-use-nhn-cloud-agent)NHN Cloud Agent, such as installing and validating NHN Cloud Agent.
 
 ### Servers other than NHN Cloud VM
 ![SSH connectionRequired](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_tcdeploy/deploy_20_202307.png)
