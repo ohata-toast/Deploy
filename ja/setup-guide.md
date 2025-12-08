@@ -13,7 +13,7 @@
 
 > NHN Cloud VMサーバーの場合、SSH接続またはNHN Cloud Agentでサーバーのデプロイコマンドを伝達します。
 > SSH接続の場合ターゲットサーバーのIP、ポート、ファイアウォール例外処理などの[SSH接続のための準備](/Dev%20Tools/Deploy/ja/setup-guide/#ssh)が必要です。
-> NHN Cloud Agentの場合NHN Cloud Agentインストール、有効性確認などの[NHN Cloud Agentを使用するための準備](/Dev%20Tools/Deploy/ja/setup-guide/#cloud-agent)が必要です。
+> NHN Cloud Agentの場合NHN Cloud Agentインストール、有効性確認などの[NHN Cloud Agentを使用するための準備](/Dev%20Tools/Deploy/ja/setup-guide/#nhn-cloud-agent)が必要です。
 
 ### NHN Cloud VM以外のサーバー
 ![SSH接続必須](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_tcdeploy/deploy_20_202307.png)
