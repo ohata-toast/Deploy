@@ -24,6 +24,7 @@ https://api-tcd.nhncloudservice.com
 * 배포 실행을 위한 API입니다.
 * 아티팩트 `Command Type`이 Cloud Agent의 경우만 배포 실행 API를 제공합니다.(SSH의 경우 제공되지 않습니다.)
 * v2.0에서는 Autoscale 서버 그룹도 배포 실행 가능합니다.
+* 배포 실행 API는 역할 기반 접근 제어(RBAC)를 사용합니다. **Deploy ADMIN** 역할을 보유한 사용자만 배포 실행 API를 사용할 수 있습니다.
 
 #### Version 2.0
 | Http Method | POST |

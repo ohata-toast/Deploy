@@ -1,5 +1,10 @@
 ## Dev Tools > Deploy > 릴리스 노트
 
+### 2026. 04. 14.
+#### 기능 추가
+* API v2.1 가이드 신규 추가
+    * User Access Key 토큰(Bearer) 인증 방식 적용
+
 ### 2025. 04. 29.
 #### 기능 추가
 * 배포 실행 API Version 2.0 추가
