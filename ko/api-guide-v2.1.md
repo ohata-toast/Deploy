@@ -1,5 +1,5 @@
 ## Dev Tools > Deploy > API v2.1 가이드
-Deploy에서는 사용자가 HTTP Request를 직접 구성하여 바이너리 업로드, 바이너리 다운로드, 배포 실행, 정보 조회를 위한 API를 제공합니다.
+Deploy에서는 바이너리 업로드, 바이너리 다운로드, 배포 실행, 정보 조회를 위한 API를 제공합니다. 사용자가 HTTP 요청을 직접 구성하여 사용할 수 있습니다.
 
 ### 기본 정보
 #### 엔드포인트
@@ -23,7 +23,7 @@ Deploy API는 역할 기반 접근 제어(RBAC)를 사용합니다.<br>
 #### 제공하는 API 종류
 | Method | URI | 설명 |
 | ------ | --- | --- |
-| POST | /api/v2.1/projects/{appkey}/artifacts/{artifactId}/binary-group/{binaryGroupKey} | 바이너리 업로드 API |
+| POST | /api/v2.1/projects/{appKey}/artifacts/{artifactId}/binary-group/{binaryGroupKey} | 바이너리 업로드 API |
 | GET | /api/v2.1/projects/{appKey}/artifacts/{artifactId}/binary-group/{binaryGroupKey}/binaries/{binaryKey} | 바이너리 다운로드 API |
 | POST | /api/v2.1/projects/{appKey}/artifacts/{artifactId}/server-group/{serverGroupId}/deploy | 배포 실행 API |
 | GET | /api/v2.1/projects/{appKey}/artifacts | 아티팩트 목록 조회 API |
@@ -45,7 +45,7 @@ Deploy API는 역할 기반 접근 제어(RBAC)를 사용합니다.<br>
 #### Version 2.1
 | Http Method | POST |
 | ----------- | ---- |
-| Request URL | https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appkey}/artifacts/{artifactId}/binary-group/{binaryGroupKey} |
+| Request URL | https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/artifacts/{artifactId}/binary-group/{binaryGroupKey} |
 
 ##### Parameter
 | Name | Type | Description | Value | Required |
@@ -56,7 +56,7 @@ Deploy API는 역할 기반 접근 제어(RBAC)를 사용합니다.<br>
 | osType | String | applicationType이 client인 경우 바이너리 파일의 OS 정보 | iOS, Android 또는 etc | false |
 | binaryFile | File | 바이너리 파일 객체 | - | true |
 | metaFile | File | iOS인 경우 plist 파일 객체 | - | false |
-| fix | Boolean | applicationType이 Client인 경우 Fix 여부 정보 | true/false | false |
+| fix | Boolean | applicationType이 client인 경우 Fix 여부 정보 | true/false | false |
 
 ##### Sample Request For cURL
 ``` java
@@ -86,7 +86,7 @@ curl -X POST \
 		"resultMessage": "success"
 	},
 	"body": {
-		"downloadUrl": "https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appkey}/artifacts/{artifactId}/binary-group/{binaryGroupKey}/binaries/{uploadedBinaryKey}",
+		"downloadUrl": "https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/artifacts/{artifactId}/binary-group/{binaryGroupKey}/binaries/{uploadedBinaryKey}",
 		"binaryKey": "{uploadedBinaryKey}"
 	}
 }
@@ -114,7 +114,7 @@ curl -X GET \
 
 ### 배포 실행
 * 배포 실행을 위한 API입니다.
-* 아티팩트 `Command Type`이 Cloud Agent의 경우만 배포 실행 API를 제공합니다.(SSH의 경우 제공되지 않습니다.)
+* 아티팩트 `Command Type`이 Cloud Agent인 경우에만 배포 실행 API를 제공합니다(SSH의 경우 제공되지 않습니다.).
 * v2.1에서는 Autoscale 서버 그룹도 배포 실행 가능합니다.
 
 #### Version 2.1
@@ -122,15 +122,15 @@ curl -X GET \
 | ----------- | ---- |
 | Request URL | https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/artifacts/{artifactId}/server-group/{serverGroupId}/deploy |
 
-##### Parameter (Body)
+##### Parameter(Body)
 | Name | Type | Description | Value | Required | Default Value |
 | --- | --- | --- | --- | --- | --- |
-| targetServerHostnames | String | 서버 그룹 내에서 선택적으로 배포 대상이 되는 ','으로 구분된 서버의 호스트명(서버 그룹 전체인 경우 모두 입력) | hostname1, hostname2, hostname3(없을 시 서버 그룹 내 서버 전체 배포) | false | 서버 그룹에 포함된 전체 서버 |
+| targetServerHostnames | String | 서버 그룹 내에서 선택적으로 배포 대상이 되는 쉼표(,)로 구분된 서버의 호스트명(서버 그룹 전체인 경우 모두 입력) | hostname1, hostname2, hostname3(없을 시 서버 그룹 내 서버 전체 배포) | false | 서버 그룹에 포함된 전체 서버 |
 | concurrentNum | Number | 병렬로 실행할 배포 수 | 0 이상의 값, 0인 경우 서버 그룹 전체 동시 실행 | false | 0 |
-| nextWhenFail | Boolean | 시나리오 실패 시 다음 서버 실행 여부 | true/false | false | false (실행 중단) |
+| nextWhenFail | Boolean | 시나리오 실패 시 다음 서버 실행 여부 | true/false | false | false(실행 중단) |
 | deployNote | String | 배포 시 작성하는 부가 정보 |  | false |  |
 | async | Boolean | 배포 결과를 기다리지 않고 응답을 받음 | true/false | false | false |
-| scenarioIds | String | 실행할 시나리오 scenarioId | 서버 그룹 내에서 ','으로 구분된 시나리오 ID(없을 시 매핑되어 있는 ScenarioID 전체) | false(단, 일반 Deploy 시 true - 1개만) | 없을 시 매핑되어 있는 ScenarioID 전체 |
+| scenarioIds | String | 실행할 시나리오 scenarioId | 서버 그룹 내에서 쉼표(,)로 구분된 시나리오 ID(없을 시 매핑되어 있는 ScenarioID 전체) | false(단, 일반 Deploy 시 true - 1개만) | 없을 시 매핑되어 있는 ScenarioID 전체 |
 
 ##### Sample Request For cURL
 ``` java
@@ -148,8 +148,8 @@ curl --location 'https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/
 ```
 
 ##### Response(json)
-* isSuccessful 항목은 배포 실행 호출에 성공했는지 유무를 확인하는 필드값이며 deployStatus 항목을 통해 배포 결과(성공, 실패)를 확인해야 합니다.
-* Autoscale 서버 그룹을 배포 했을 경우 body 값이 List 형태로 존재합니다.
+* isSuccessful 항목은 배포 실행 호출에 성공 여부를 확인하는 필드값이며 deployStatus 항목을 통해 배포 결과(성공, 실패)를 확인해야 합니다.
+* Autoscale 서버 그룹을 배포했을 경우 Body 값이 List 형태로 존재합니다.
 
 | Name | Type | Description | Value |
 | ---- | ---- | ----------- | ----- |
@@ -196,7 +196,7 @@ curl --location 'https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/
 | ----------- | ---- |
 | Request URL | https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/artifacts |
 
-##### Parameter (Query String)
+##### Parameter(Query String)
 | Name | Type | Description | Value | Required | Default Value |
 | --- | --- | --- | --- | --- | --- |
 | artifactName | String | 아티팩트 이름 검색 | 검색할 아티팩트 이름 | false | - |
@@ -221,7 +221,7 @@ curl -X GET \
 | ---- | ---- | ----------- |
 | id | Number | 아티팩트 ID |
 | name | String | 아티팩트 이름 |
-| applicationType | String | 애플리케이션 유형 (server/client) |
+| applicationType | String | 애플리케이션 유형(server/client) |
 | description | String | 설명 |
 | createDate | Date | 생성일 |
 | lastDeployDate | Date | 마지막 배포일 |
@@ -279,7 +279,7 @@ curl -X GET \
 | id | Number | 서버 그룹 ID |
 | name | String | 서버 그룹 이름 |
 | description | String | 설명 |
-| osType | String | OS 유형 (LINUX/WINDOWS) |
+| osType | String | OS 유형(LINUX/WINDOWS) |
 | serverCount | Number | 서버 수 |
 
 ##### Response Sample
@@ -369,7 +369,7 @@ curl -X GET \
 | ----------- | ---- |
 | Request URL | https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/artifacts/{artifactId}/deploy-histories |
 
-##### Parameter (Query String)
+##### Parameter(Query String)
 | Name | Type | Description | Value | Required | Default Value |
 | --- | --- | --- | --- | --- | --- |
 | serverGroupId | Number | 서버 그룹 ID | 0인 경우 아티팩트 전체 조회 | false | 0 |
@@ -404,7 +404,7 @@ curl -X GET \
 | binaryVersion | String | 바이너리 버전 |
 | executeDate | Date | 실행일 |
 | executeUser | String | 실행자 |
-| totalResult | String | 실행 결과 (SUCCESS/FAIL/RUNNING) |
+| totalResult | String | 실행 결과(SUCCESS/FAIL/RUNNING) |
 
 ##### Response Sample
 ``` json
@@ -441,7 +441,7 @@ curl -X GET \
 | ----------- | ---- |
 | Request URL | https://api-tcd.nhncloudservice.com/api/v2.1/projects/{appKey}/artifacts/{artifactId}/binary-groups/{binaryGroupKey}/binaries |
 
-##### Parameter (Query String)
+##### Parameter(Query String)
 | Name | Type | Description | Value | Required | Default Value |
 | --- | --- | --- | --- | --- | --- |
 | pageNum | Number | 페이지 번호 | 1 이상의 값 | false | 1 |
@@ -472,7 +472,7 @@ curl -X GET \
 | binaryKey | Number | 바이너리 키 |
 | version | String | 바이너리 버전 |
 | binaryName | String | 바이너리 파일명 |
-| binarySize | Number | 바이너리 파일 크기 (bytes) |
+| binarySize | Number | 바이너리 파일 크기(bytes) |
 | uploadDate | Date | 업로드일 |
 | uploader | String | 업로더 |
 | description | String | 설명 |

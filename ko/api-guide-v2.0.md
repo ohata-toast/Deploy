@@ -1,5 +1,5 @@
 ## Dev Tools > Deploy > API v2.0 가이드
-Deploy에서는 사용자가 HTTP Request를 직접 구성하여 배포 실행, 정보 조회를 위한 API를 제공합니다.
+Deploy에서는 배포 실행, 정보 조회를 위한 API를 제공합니다. 사용자가 HTTP 요청을 직접 구성하여 사용할 수 있습니다.
 
 ### 기본 정보
 #### 엔드포인트
@@ -39,19 +39,19 @@ https://api-tcd.nhncloudservice.com
 ##### Header
 | Name | Description | Value |
 | --- | --- | --- |
-| Content-Type | ConentType | application/json |
+| Content-Type | ContentType | application/json |
 | X-TC-AUTHENTICATION-ID | API 보안 설정 메뉴의 User Access Key ID | {id} |
 | X-TC-AUTHENTICATION-SECRET | API 보안 설정 메뉴의 Secret Access Key | {key} |
 
 ##### Parameter (Body)
 | Name | Type | Description | Value | Required | Default Value |
 | --- | --- | --- | --- | --- | --- |
-| targetServerHostnames | String | 서버 그룹 내에서 선택적으로 배포 대상이 되는 ','으로 구분된 서버의 호스트명(서버 그룹 전체인 경우 모두 입력) | hostname1, hostname2, hostname3(없을 시 서버 그룹 내 서버 전체 배포) | false | 서버 그룹에 포함된 전체 서버 |
+| targetServerHostnames | String | 서버 그룹 내에서 선택적으로 배포 대상이 되는 쉼표(,)로 구분된 서버의 호스트명(서버 그룹 전체인 경우 모두 입력) | hostname1, hostname2, hostname3(없을 시 서버 그룹 내 서버 전체 배포) | false | 서버 그룹에 포함된 전체 서버 |
 | concurrentNum | Number | 병렬로 실행할 배포 수 | 0 이상의 값, 0인 경우 서버 그룹 전체 동시 실행 | false | 0 |
 | nextWhenFail | Boolean | 시나리오 실패 시 다음 서버 실행 여부 | true/false | false | false (실행 중단) |
 | deployNote | String | 배포 시 작성하는 부가 정보 |  | false |  |
 | async | Boolean | 배포 결과를 기다리지 않고 응답을 받음 | true/false | false | false |
-| scenarioIds | String | 실행할 시나리오 scenarioId | 서버 그룹 내에서 ','으로 구분된 시나리오 ID(없을 시 매핑되어 있는 ScenarioID 전체) | false(단, 일반 Deploy 시 true - 1개만) | 없을 시 매핑되어 있는 ScenarioID 전체 |
+| scenarioIds | String | 실행할 시나리오 scenarioId | 서버 그룹 내에서 쉼표(,)로 구분된 시나리오 ID(없을 시 매핑되어 있는 ScenarioID 전체) | false(단, 일반 Deploy 시 true - 1개만) | 없을 시 매핑되어 있는 ScenarioID 전체 |
 
 ##### Sample Request For cURL
 ``` java
@@ -70,8 +70,8 @@ curl --location 'https://api-tcd.nhncloudservice.com/api/v2.0/projects/{appKey}/
 ```
 
 ##### Response(json)
-* isSuccessful 항목은 배포 실행 호출에 성공했는지 유무를 확인하는 필드값이며 deployStatus 항목을 통해 배포 결과(성공, 실패)를 확인해야 합니다.
-* Autoscale 서버 그룹을 배포 했을 경우 body 값이 List 형태로 존재합니다.
+* isSuccessful 항목은 배포 실행 호출에 성공 여부를 확인하는 필드값이며 deployStatus 항목을 통해 배포 결과(성공, 실패)를 확인해야 합니다.
+* Autoscale 서버 그룹을 배포했을 경우 body 값이 List 형태로 존재합니다.
 
 | Name | Type | Description | Value |
 | ---- | ---- | ----------- | ----- |
